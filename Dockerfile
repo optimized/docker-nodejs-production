@@ -1,4 +1,4 @@
-FROM node:10.2.1
+FROM node:10.6.0
 LABEL maintainer="n@noeljackson.com"
 # defaults
 ARG SERVER="build/server.js"
