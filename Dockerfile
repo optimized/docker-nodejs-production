@@ -47,5 +47,5 @@ ONBUILD RUN npm run clean
 ONBUILD RUN npm run build
 
 # Start the server by default
-ENTRYPOINT ["pm2-docker","-i","max"]
+ENTRYPOINT ["pm2-runtime","-i","max"]
 CMD ["${SERVER}"]
