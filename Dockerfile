@@ -19,7 +19,9 @@ ONBUILD WORKDIR /usr/src/app
 
 # Install
 ONBUILD ADD package*.json /usr/src/app/
-ONBUILD RUN apt-get install --virtual .tmp $TMP_PKGS && npm i && apt-get remove $TMP_PACKAGES
+ONBUILD RUN apt-get install $TMP_PKGS && \
+            npm i && \
+            apt-get remove $TMP_PACKAGES
 
 # Add PM2, for Node process management
 RUN npm i -g pm2
