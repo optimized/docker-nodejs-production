@@ -1,4 +1,4 @@
-FROM node:10.7.0
+FROM node:10.8.0
 LABEL maintainer="n@noeljackson.com"
 
 ENV NPM_CONFIG_LOGLEVEL notice
@@ -8,7 +8,7 @@ RUN apt-get -y install $PACKAGES
 
 # Set registry
 RUN npm config set registry http://registry.npmjs.org/
-RUN npm i -g pm2 yarn
+RUN npm i -g pm2 yarn@1.10.0-0
 
 # Create app directory
 RUN mkdir -p /usr/src/app
