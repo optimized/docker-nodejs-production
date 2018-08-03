@@ -18,6 +18,7 @@ WORKDIR /usr/src/app
 # Add temporary packages, and build the NPM packages/binaries
 ENV TMP_PKGS="autoconf automake g++ libtool make nasm python git"
 ONBUILD COPY package.json /usr/src/app/
+ONBUILD COPY yarn.lock /usr/src/app/
 ONBUILD RUN apt-get -y install $TMP_PKGS && \
 yarn install && \
 apt-get remove $TMP_PACKAGES
