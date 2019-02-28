@@ -20,9 +20,8 @@ ENV TMP_PKGS="autoconf automake g++ libtool make nasm python git"
 ONBUILD COPY package.json /usr/src/app/
 ONBUILD COPY yarn.lock /usr/src/app/
 ONBUILD RUN apt-get -y install $TMP_PKGS && \
-yarn install && \
-apt-get remove $TMP_PACKAGES
-USER node
+            yarn install && \
+            apt-get remove $TMP_PACKAGES
 
 # You would use this image as a builder image, and would set entrypoint and command like below.
 #ENTRYPOINT ["pm2-runtime","-i","max"]
