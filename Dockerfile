@@ -1,4 +1,4 @@
-FROM node:10.8.0
+FROM node:lts
 LABEL maintainer="n@noeljackson.com"
 
 ENV NPM_CONFIG_LOGLEVEL notice
@@ -8,7 +8,7 @@ RUN apt-get -y install $PACKAGES
 
 # Set registry
 RUN npm config set registry http://registry.npmjs.org/
-RUN npm i -g pm2 yarn@1.10.0-0
+RUN npm i -g pm2 yarn
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -22,6 +22,7 @@ ONBUILD COPY yarn.lock /usr/src/app/
 ONBUILD RUN apt-get -y install $TMP_PKGS && \
 yarn install && \
 apt-get remove $TMP_PACKAGES
+USER node
 
 # You would use this image as a builder image, and would set entrypoint and command like below.
 #ENTRYPOINT ["pm2-runtime","-i","max"]
