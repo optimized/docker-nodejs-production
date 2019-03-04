@@ -8,7 +8,7 @@ RUN apt-get -y install $PACKAGES
 
 # Set registry
 RUN npm config set registry http://registry.npmjs.org/
-RUN npm i -g pm2 yarn
+RUN npm i -g pm2 yarn lerna
 
 # Create app directory
 RUN mkdir -p /usr/src/tmp
