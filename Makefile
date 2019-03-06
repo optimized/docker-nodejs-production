@@ -9,10 +9,10 @@ push: build test
 
 .PHONY: build
 build:
-	@docker pull node:lts	
+	@docker pull node:lts
 	@sed -i -- "s/version=.*/version=$(shell docker run --rm -it node:lts bash -c "node -v")/g" Dockerfile
 	@docker build -t optimized/docker-nodejs-production:latest .
-	docker tag optimized/docker-nodejs-production:latest optimized/docker-nodejs-production:$(VERSION);
+	docker tag optimized/docker-nodejs-production:latest optimized/docker-nodejs-production:$(VERSION)
 
 .PHONY: test
 test: build
